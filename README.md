@@ -28,7 +28,6 @@ Nama App            : ultr4milk<br>
 ## ✅ Membuat tiga tombol sederhana dengan ikon dan teks untuk Lihat Item, Tambah Item, dan Logout
 - Saya membuat empat tombol, yaitu Purchase, Add Item (Tambah Item), Logout, dan Inventory (Lihat Item)
 - Kode lengkap bisa dilihat di [sini](https://github.com/sdikyarts/ultr4milk/blob/main/ultr4milk/lib/home.dart) di atas
-</details>
 
 ## ✅ Memunculkan Snackbar dengan tulisan "Kamu telah menekan tombol XXX"
 - Untuk membuat itu, saya memakai syntax ini:
