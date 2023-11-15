@@ -53,13 +53,13 @@ Nama App            : ultr4milk<br>
 ### - Memakai minimal tiga elemen input, yaitu name, amount, description.
 <img src="Files.png">
 - Saya membuat total tiga page baru (kode lengkap bisa ditekan): 
-    - <code>item_form</code> (untuk halaman formulir) dengan empat elemen input:
+    - [<code>item_form</code>](https://github.com/sdikyarts/ultr4milk/blob/main/ultr4milk/lib/screens/item_form.dart) (untuk halaman formulir) dengan empat elemen input:
         - name (wajib)
         - price
         - amount (wajib)
         - description (wajib)
-    - <code>inventory</code> (tombol opsi lihat produk atau photocard) [DALAM PENGEMBANGAN]
-    - <code>products</code> (list produk yang telah ditambahkan ke form)
+    - [<code>inventory</code>](https://github.com/sdikyarts/ultr4milk/blob/main/ultr4milk/lib/screens/inventory.dart) (tombol opsi lihat produk atau photocard) [DALAM PENGEMBANGAN]
+    - [<code>products</code>](https://github.com/sdikyarts/ultr4milk/blob/main/ultr4milk/lib/screens/products.dart) (list produk yang telah ditambahkan ke form)
 
 ### - Memiliki sebuah tombol Save.
 - Potongan kode di <code>item_form</code> ini digunakan untuk membuat tombol save beserta validasi saat menekan tombol save:
