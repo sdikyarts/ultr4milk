@@ -3,6 +3,7 @@ Nama                : Yasmine Putri Viryadhani<br>
 NPM                 : 2206081862<br>
 Kelas               : PBP A<br>
 Nama App            : ultr4milk<br>
+Web App             : https://github.com/sdikyarts/ultr4milk-django
 
 # Latar Belakang:
 - Saya membuat program Flutter bertema inventory susu Ultra Milk karena barang yang diinventorikan hanyalah susu Ultra Milk (homogen).
@@ -574,6 +575,7 @@ Baca bagian Checklist Tugas 7 di atas
 </details>
 
 ## Pertanyaan Tugas 8
+
 <details>
 <summary>Spoiler</summary>
 
@@ -640,6 +642,117 @@ Baca bagian Checklist Tugas 7 di atas
 Clean Architecture adalah pendekatan pengembangan perangkat lunak yang menekankan pemisahan konsep dan tanggung jawab antara lapisan-lapisan dalam aplikasi. Di Flutter, Clean Architecture diterapkan dengan membagi aplikasi menjadi tiga lapisan utama: lapisan presentasi (UI), lapisan domain (logika bisnis), dan lapisan data (sumber data eksternal). Lapisan presentasi berisi UI dan logika tampilan, lapisan domain memiliki aturan bisnis, sedangkan lapisan data berinteraksi dengan sumber data eksternal seperti API atau database. Setiap lapisan saling terpisah dan tergantung pada abstraksi, memungkinkan perubahan pada satu lapisan tanpa mempengaruhi lapisan lainnya. Di Flutter, ini dapat diwujudkan dengan menggunakan widget untuk lapisan presentasi, class untuk lapisan domain, dan repository/provider untuk lapisan data, serta memastikan bahwa ketergantungan antar lapisan diatur dengan baik menggunakan konsep seperti Dependency Injection atau Provider.
 </details>
 
-### 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 Baca bagian Checklist Tugas 7 di atas
+</details>
+
+
+## Pertanyaan Tugas 9
+<details>
+<summary>Spoiler</summary>
+
+### 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+<details>
+<summary>Show Answer</summary>
+
+Ya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Dalam beberapa bahasa pemrograman seperti JavaScript, kita bisa langsung mengambil dan memanipulasi data JSON.
+
+Namun, membuat model bisa memberikan beberapa keuntungan, seperti:
+- Struktur data yang lebih jelas dan mudah dipahami.
+- Validasi data yang lebih mudah dan otomatis.
+- Kemudahan dalam melakukan operasi CRUD (Create, Read, Update, Delete).
+
+</details>
+
+### 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+<details>
+<summary>Show Answer</summary>
+
+CookieRequest bertanggung jawab untuk mengelola cookies dalam permintaan HTTP. Cookies biasanya digunakan untuk menyimpan informasi sesi pengguna, seperti token autentikasi, preferensi pengguna, dan lainnya.
+
+Mengapa perlu dibagikan?
+- Persistensi Sesi
+- Konsistensi Data
+- Pengelolaan Sumber Daya
+
+</details>
+
+### 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+<details>
+<summary>Show Answer</summary>
+
+Berikut adalah langkah-langkah untuk mengambil data dari JSON dan menampilkannya di Flutter:
+
+1. **Membuat Permintaan HTTP**: Pertama, kita perlu membuat permintaan HTTP ke endpoint yang menyediakan data JSON. Kita bisa menggunakan pustaka `http` di Flutter untuk melakukan ini.
+
+```
+    import 'package:http/http.dart' as http;
+
+    final response = await http.get('https://example.com/data.json');
+    ```
+
+    2. **Parsing JSON**: Setelah kita menerima respons, kita perlu mengubah data JSON menjadi objek Dart yang bisa kita kerjakan. Kita bisa menggunakan fungsi `jsonDecode` dari pustaka `dart:convert` untuk melakukan ini.
+
+    ```dart
+    import 'dart:convert';
+
+    final data = jsonDecode(response.body);
+```
+
+3. **Membuat Model**: Meskipun ini opsional, biasanya lebih mudah untuk bekerja dengan data jika kita memiliki model yang mewakili struktur data tersebut. Kita bisa membuat kelas Dart yang mewakili data dan menulis fungsi untuk mengubah data JSON menjadi instance kelas tersebut.
+
+```
+    class MyData {
+    final String field;
+
+    MyData({this.field});
+
+    factory MyData.fromJson(Map<String, dynamic> json) {
+        return MyData(
+        field: json['field'],
+        );
+    }
+    }
+
+    final myData = MyData.fromJson(data);
+```
+
+4. **Menampilkan Data**: Setelah kita memiliki data dalam bentuk objek Dart, kita bisa menampilkannya di widget Flutter. Misalnya, kita bisa menggunakan widget `Text` untuk menampilkan string.
+
+```
+    Text(myData.field)
+```
+
+### 4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+<details>
+<summary>Show Answer</summary>
+
+GitHub Copilot: Berikut adalah langkah-langkah mekanisme autentikasi dari input data akun pada Flutter ke Django:
+
+1. **Input Data Akun**: Pengguna memasukkan data akun (biasanya username dan password) melalui form login pada aplikasi Flutter.
+
+2. **Kirim Data ke Server**: Aplikasi Flutter mengirimkan data tersebut ke server Django, biasanya melalui permintaan HTTP POST.
+
+3. **Autentikasi di Server**: Server Django menerima data tersebut dan melakukan proses autentikasi. Ini biasanya melibatkan pencocokan username dan password dengan data yang ada di database.
+
+4. **Respon Server**: Jika autentikasi berhasil, server akan mengirimkan respon sukses, biasanya berupa token autentikasi. Jika gagal, server akan mengirimkan pesan error.
+
+5. **Proses Respon di Flutter**: Aplikasi Flutter menerima respon dari server. Jika autentikasi berhasil, aplikasi akan menyimpan token dan mengarahkan pengguna ke halaman menu. Jika gagal, aplikasi akan menampilkan pesan error.
+
+6. **Tampilkan Menu**: Setelah autentikasi berhasil dan pengguna diarahkan ke halaman menu, aplikasi Flutter akan menampilkan menu kepada pengguna.
+
+</details>
+
+### 5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+<details>
+<summary>Show Answer</summary>
+
+**Provider**: Provider adalah pustaka state management yang populer di Flutter. Provider memungkinkan Anda untuk 'menyediakan' objek atau nilai ke widget turunan di pohon widget. Ini memudahkan pengelolaan state dan dependensi dalam aplikasi Flutter. Anda bisa membayangkannya seperti cara untuk 'menyuntikkan' dependensi ke dalam widget.
+
+**ElevatedButton**: ElevatedButton adalah widget di Flutter yang mewakili Material Design "elevated button". Ini adalah jenis tombol yang memiliki sedikit "elevasi" yang memberikan efek bayangan. ElevatedButton juga memiliki efek ink splash ketika ditekan. Anda bisa menggunakannya untuk membuat tombol interaktif dengan desain Material.
+
+</details>
+
+### 6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Baca bagian Checklist Tugas 9 di atas
 </details>
